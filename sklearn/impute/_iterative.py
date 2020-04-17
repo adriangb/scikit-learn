@@ -595,6 +595,8 @@ class IterativeImputer(_BaseImputer):
             )
 
         # check min and max
+        self._min_value = -np.inf if self.min_value is None else self.min_value
+        self._max_value = np.inf if self.max_value is None else self.max_value
         self._min_value = IterativeImputer._validate_limit(
             self.min_value, "min", X.shape[1])
         self._max_value = IterativeImputer._validate_limit(
